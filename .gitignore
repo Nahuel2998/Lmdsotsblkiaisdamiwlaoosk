@@ -1,0 +1,5 @@
+*.log
+
+xcb_gen.zig
+.zig-cache/
+zig-out/

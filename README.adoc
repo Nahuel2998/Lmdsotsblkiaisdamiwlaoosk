@@ -1,0 +1,62 @@
+= Lmdsotsblkiaisdamiwlaoosk
+:author: Na_P
+:toc:
+
+== What
+Let Me Draw Something On The Screen But Like Keep It After I Stop Drawing And Make It Work Like An Overlay Of Some Kind
+
+( There's probably a lot of these but it was easy enough to just make my own )
+
+'''
+
+It's a simple transparent hitless fullscreen window that places itself on top of other ones
+
+Its hitbox can be toggled by sending `SIGUSR1` to it
+
+While hitful, you can draw on it with a resizable white pointer
+
+Toggling its hitbox off keeps the drawing so you can keep doing things with the stuff drawn staying
+
+== How
+=== Compile
+.Release build
+[source,sh]
+----
+zig build -Doptimize=ReleaseFast
+----
+
+=== Use
+WARNING: This requires a running compositor! Without one, you get a full black screen
+
+.Run
+[source,sh]
+----
+lmdsotsblkiaisdamiwlaoosk
+----
+
+.Toggle on/off
+[source,sh]
+----
+pkill lmdsotsblkiaisd -USR1
+----
+
+NOTE: You can also use the PID given by the thing itself on its first `info` log
+
+TIP: `pkill` is better since you can bind it to something that doesn't extract the pid
+
+TIP: On my machine `pkill lm` is enough to be unambiguous, so doing it manually doesn't require remembering all those chars
+
+==== Bindings
+[cols="1,4",options="header"]
+|===
+| Key | Action
+| Left Click + Drag | Place pixels
+| Right Click | Switch to eraser
+| Middle Click | Clear the screen ( + implicitly switch back to drawing )
+| Scroll up/down | Increase/decrease brush size
+|===
+
+=== Why
+[qanda]
+Why the name?::
+Well it's clearly purposely designed so that you can `pkill` it with the least amount of characters, obviously not an accidental feature
